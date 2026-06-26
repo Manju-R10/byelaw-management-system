@@ -93,6 +93,9 @@ export default function Navbar({ onToggleSidebar }) {
                   ))
                 )}
               </div>
+              <Link to="/notifications" className="d-block text-center small py-2 border-top text-decoration-none" onClick={() => setOpenMenu(null)}>
+                View all notifications
+              </Link>
             </div>
           )}
         </div>

@@ -8,6 +8,7 @@ export const NAV_SECTIONS = [
     label: "Overview",
     items: [
       { label: "Dashboard", to: "/dashboard", icon: "bi-speedometer2", ready: true },
+      { label: "Notifications", to: "/notifications", icon: "bi-bell", ready: true },
     ],
   },
   {
