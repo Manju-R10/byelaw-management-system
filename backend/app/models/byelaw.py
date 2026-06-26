@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Text, Enum
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Text, Enum, Index
 from sqlalchemy.dialects.mysql import MEDIUMTEXT
 from sqlalchemy.orm import relationship
 from app.database import Base
@@ -56,6 +56,13 @@ class ByelawMaster(Base):
 
 class ByelawClause(Base):
     __tablename__ = "byelaw_clause"
+    __table_args__ = (
+        # FULLTEXT index backing clause keyword search (FR-08). Declared so the model
+        # metadata matches the index created by the initial migration.
+        Index("ft_clause_text", "clause_text", mysql_prefix="FULLTEXT"),
+        # Composite index for fast, correctly ordered clause reconstruction (FR-06/FR-10).
+        Index("ix_clause_master_display", "master_id", "display_order"),
+    )
 
     clause_id = Column(Integer, primary_key=True, autoincrement=True)
     master_id = Column(Integer, ForeignKey("byelaw_master.master_id", ondelete="CASCADE"), nullable=False, index=True)
