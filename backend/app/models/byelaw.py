@@ -1,5 +1,6 @@
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, Text, Enum
+from sqlalchemy.dialects.mysql import MEDIUMTEXT
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -63,7 +64,9 @@ class ByelawClause(Base):
     chapter_no = Column(String(50), nullable=True)
     clause_no = Column(String(50), nullable=True)
     clause_title = Column(String(255), nullable=True)
-    clause_text = Column(Text, nullable=False)
+    # MEDIUMTEXT (16 MB) rather than TEXT (64 KB): a single extracted clause can be
+    # large when long passages lie between detected headings in a source document.
+    clause_text = Column(MEDIUMTEXT, nullable=False)
     display_order = Column(Integer, nullable=False)
     
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
