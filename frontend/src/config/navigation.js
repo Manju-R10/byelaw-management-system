@@ -22,8 +22,8 @@ export const NAV_SECTIONS = [
   {
     label: "Administration",
     items: [
-      { label: "Users", to: "/users", icon: "bi-people", permission: "USER_READ", ready: false },
-      { label: "Roles & Permissions", to: "/roles", icon: "bi-shield-lock", permission: "ROLE_READ", ready: false },
+      { label: "Users", to: "/users", icon: "bi-people", permission: "USER_READ", ready: true },
+      { label: "Roles & Permissions", to: "/roles", icon: "bi-shield-lock", permission: "ROLE_READ", ready: true },
       { label: "Audit Log", to: "/audit", icon: "bi-clipboard-data", permission: "AUDIT_VIEW", ready: false },
     ],
   },
