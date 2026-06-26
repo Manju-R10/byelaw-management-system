@@ -5,6 +5,9 @@ import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import UsersList from "../pages/users/UsersList";
 import RolesList from "../pages/roles/RolesList";
+import ByelawsList from "../pages/byelaws/ByelawsList";
+import UploadByelaw from "../pages/byelaws/UploadByelaw";
+import ByelawDetail from "../pages/byelaws/ByelawDetail";
 import ComingSoon from "../pages/ComingSoon";
 import Forbidden from "../pages/Forbidden";
 import NotFound from "../pages/NotFound";
@@ -27,9 +30,11 @@ export default function AppRoutes() {
       >
         <Route path="/dashboard" element={<Dashboard />} />
 
+        <Route path="/byelaws" element={<ProtectedRoute permission="BYELAW_SEARCH"><ByelawsList /></ProtectedRoute>} />
+        <Route path="/byelaws/upload" element={<ProtectedRoute permission="BYELAW_UPLOAD"><UploadByelaw /></ProtectedRoute>} />
+        <Route path="/byelaws/:id" element={<ProtectedRoute permission="BYELAW_SEARCH"><ByelawDetail /></ProtectedRoute>} />
+
         {/* Later phases (guarded placeholders) */}
-        <Route path="/byelaws" element={<ProtectedRoute permission="BYELAW_SEARCH"><ComingSoon /></ProtectedRoute>} />
-        <Route path="/byelaws/upload" element={<ProtectedRoute permission="BYELAW_UPLOAD"><ComingSoon /></ProtectedRoute>} />
         <Route path="/search" element={<ProtectedRoute permission="BYELAW_SEARCH"><ComingSoon /></ProtectedRoute>} />
         <Route path="/approvals" element={<ProtectedRoute permission="BYELAW_VERIFY"><ComingSoon /></ProtectedRoute>} />
         <Route path="/users" element={<ProtectedRoute permission="USER_READ"><UsersList /></ProtectedRoute>} />

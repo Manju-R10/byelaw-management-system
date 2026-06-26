@@ -13,8 +13,8 @@ export const NAV_SECTIONS = [
   {
     label: "Bye-laws",
     items: [
-      { label: "All Bye-laws", to: "/byelaws", icon: "bi-journal-text", permission: "BYELAW_SEARCH", ready: false },
-      { label: "Upload", to: "/byelaws/upload", icon: "bi-cloud-arrow-up", permission: "BYELAW_UPLOAD", ready: false },
+      { label: "All Bye-laws", to: "/byelaws", icon: "bi-journal-text", permission: "BYELAW_SEARCH", ready: true },
+      { label: "Upload", to: "/byelaws/upload", icon: "bi-cloud-arrow-up", permission: "BYELAW_UPLOAD", ready: true },
       { label: "Search", to: "/search", icon: "bi-search", permission: "BYELAW_SEARCH", ready: false },
       { label: "Approvals", to: "/approvals", icon: "bi-check2-square", permission: "BYELAW_VERIFY", ready: false },
     ],
