@@ -1,5 +1,11 @@
+import { useEffect } from "react";
+
 /** Standard page header: title, optional subtitle and right-aligned actions. */
 export default function PageHeader({ title, subtitle, icon, actions }) {
+  useEffect(() => {
+    if (title) document.title = `${title} · Bye-law System`;
+  }, [title]);
+
   return (
     <div className="section-head">
       <div className="d-flex align-items-center gap-3">

@@ -11,6 +11,8 @@ import ByelawDetail from "../pages/byelaws/ByelawDetail";
 import Search from "../pages/search/Search";
 import Approvals from "../pages/approvals/Approvals";
 import Notifications from "../pages/notifications/Notifications";
+import Profile from "../pages/Profile";
+import Settings from "../pages/Settings";
 import ComingSoon from "../pages/ComingSoon";
 import Forbidden from "../pages/Forbidden";
 import NotFound from "../pages/NotFound";
@@ -43,10 +45,11 @@ export default function AppRoutes() {
         <Route path="/roles" element={<ProtectedRoute permission="ROLE_READ"><RolesList /></ProtectedRoute>} />
         <Route path="/notifications" element={<Notifications />} />
 
-        {/* Later phases (guarded placeholders) */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
+
+        {/* Audit UI ships with the backend audit module (later milestone) */}
         <Route path="/audit" element={<ProtectedRoute permission="AUDIT_VIEW"><ComingSoon /></ProtectedRoute>} />
-        <Route path="/profile" element={<ComingSoon />} />
-        <Route path="/settings" element={<ComingSoon />} />
 
         <Route path="/forbidden" element={<Forbidden />} />
       </Route>

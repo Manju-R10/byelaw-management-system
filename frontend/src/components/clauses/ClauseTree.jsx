@@ -15,9 +15,8 @@ export default function ClauseTree({ nodes, editable = false, handlers = {}, hig
       return next;
     });
 
-  const allIds = collectIds(nodes);
   const expandAll = () => setCollapsed(new Set());
-  const collapseAll = () => setCollapsed(new Set(allIds.filter((_, i) => true)));
+  const collapseAll = () => setCollapsed(new Set(collectIds(nodes)));
 
   if (!nodes || nodes.length === 0) return null;
 
