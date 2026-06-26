@@ -1,0 +1,40 @@
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Python bytecode & cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Document uploads
+uploads/
+
+# Application logs
+logs/
+*.log
+
+# Project archive / backup snapshots
+*.zip
+
+# Local agent working directory
+localsessions/
+
+# Node dependencies & builds
+node_modules/
+dist/
+.vite/
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
