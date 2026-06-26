@@ -79,14 +79,26 @@ export default function ByelawDetail() {
   async function runExtraction() {
     setExtracting(true);
     setWarnings([]);
+    const pending = toast.loading("Extracting clauses… large documents may take up to a minute.");
     try {
       const { data } = await clauseApi.extract(masterId);
-      setWarnings(data.warnings || []);
-      toast.success(data.message || "Extraction complete.");
+      // Reload the Head record (counts/status) and the clause hierarchy, then surface warnings.
       await loadCore();
+      setWarnings(data.warnings || []);
       setTab("clauses");
+      toast.update(pending, {
+        render: data.message || "Extraction complete.",
+        type: "success",
+        isLoading: false,
+        autoClose: 4000,
+      });
     } catch (err) {
-      toast.error(getApiError(err, "Extraction failed."));
+      toast.update(pending, {
+        render: getApiError(err, "Extraction failed."),
+        type: "error",
+        isLoading: false,
+        autoClose: 5000,
+      });
     } finally {
       setExtracting(false);
     }

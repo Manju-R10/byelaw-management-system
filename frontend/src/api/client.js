@@ -86,6 +86,11 @@ export function getApiError(error, fallback = "Something went wrong. Please try 
   const data = error?.response?.data;
   if (data?.error?.message) return data.error.message;
   if (typeof data?.detail === "string") return data.detail;
+  // A client-side timeout/abort has no response — surface it clearly instead of a
+  // generic failure (the server may still be processing a long-running request).
+  if (error?.code === "ECONNABORTED" || /timeout/i.test(error?.message || "")) {
+    return "The request took too long and timed out. The operation may still be processing on the server — please refresh in a moment.";
+  }
   if (error?.message === "Network Error") return "Cannot reach the server. Is the backend running?";
   return fallback;
 }
