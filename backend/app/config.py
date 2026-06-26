@@ -28,6 +28,9 @@ class Settings(BaseSettings):
     # File Upload Configuration
     UPLOAD_DIR: str = "C:\\Users\\Mahalakshmi\\.gemini\\antigravity\\scratch\\byelaw_management_system\\uploads"
     MAX_UPLOAD_SIZE_MB: int = 25
+    # Comma-separated list of accepted upload extensions (FRS FR-02). Restrict to
+    # "pdf" alone here if only PDF intake is desired.
+    ALLOWED_UPLOAD_EXTENSIONS: str = "pdf,doc,docx"
 
     # Application Settings
     ENV: str = "development"
@@ -41,6 +44,14 @@ class Settings(BaseSettings):
     @property
     def cors_origins(self) -> list[str]:
         return [origin.strip() for origin in self.BACKEND_CORS_ORIGINS.split(",") if origin.strip()]
+
+    @property
+    def allowed_extensions(self) -> set[str]:
+        return {e.strip().lower().lstrip(".") for e in self.ALLOWED_UPLOAD_EXTENSIONS.split(",") if e.strip()}
+
+    @property
+    def max_upload_bytes(self) -> int:
+        return self.MAX_UPLOAD_SIZE_MB * 1024 * 1024
 
     @property
     def database_url(self) -> str:
