@@ -13,6 +13,12 @@ __pycache__/
 .coverage
 htmlcov/
 
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
 # Document uploads
 uploads/
 
@@ -29,7 +35,12 @@ localsessions/
 # Node dependencies & builds
 node_modules/
 dist/
+build/
 .vite/
+
+# OS files
+.DS_Store
+Thumbs.db
 
 # IDE files
 .vscode/
