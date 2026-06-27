@@ -225,20 +225,21 @@ token obtained from `POST /api/v1/auth/login`.
 
 ## Screenshots
 
-> Add image files under `docs/screenshots/` and they will render here.
+**Login** — split hero / sign-in with role-based demo accounts
 
-| Screen | Preview |
-|--------|---------|
-| Login | `docs/screenshots/login.png` |
-| Dashboard | `docs/screenshots/dashboard.png` |
-| Bye-law detail · clause tree | `docs/screenshots/byelaw-detail.png` |
-| Search results | `docs/screenshots/search.png` |
-| Approval workflow | `docs/screenshots/workflow.png` |
+![Login](docs/screenshots/login.jpg)
 
-<!-- Example once images are added:
-![Login](docs/screenshots/login.png)
-![Dashboard](docs/screenshots/dashboard.png)
--->
+**Dashboard** — KPI cards, recent bye-laws, pending approvals, notifications and activity
+
+![Dashboard](docs/screenshots/dashboard.jpg)
+
+**Bye-law detail** — document viewer with the clause hierarchy (Details / Clauses / Workflow / Versions tabs)
+
+![Bye-law detail](docs/screenshots/byelaw-detail.jpg)
+
+**Search** — full-text clause search with contextual snippets and match highlighting
+
+![Search](docs/screenshots/search.jpg)
 
 ## Deployment notes
 
